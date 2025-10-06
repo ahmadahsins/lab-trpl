@@ -4,22 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class MahasiswaProyek extends Model
+class Lab extends Model
 {
     use HasFactory, HasSlug;
 
     protected $fillable = [
-        'nama_mahasiswa',
-        'nim',
+        'nama_lab',
         'slug',
-        'dosen_pembimbing_id',
-        'judul_skripsi',
-        'tahun_lulus',
-        'link_proyek_web',
+        'deskripsi',
+        'lokasi',
     ];
 
     /**
@@ -28,7 +25,7 @@ class MahasiswaProyek extends Model
     public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom(['nama_mahasiswa', 'nim'])
+            ->generateSlugsFrom('nama_lab')
             ->saveSlugsTo('slug');
     }
 
@@ -41,10 +38,18 @@ class MahasiswaProyek extends Model
     }
 
     /**
-     * Get the lecturer that supervises this student project
+     * Get all laborans associated with this lab
      */
-    public function dosenPembimbing(): BelongsTo
+    public function laborans(): HasMany
     {
-        return $this->belongsTo(Dosen::class, 'dosen_pembimbing_id');
+        return $this->hasMany(Laboran::class);
+    }
+
+    /**
+     * Get all projects associated with this lab
+     */
+    public function proyeks(): HasMany
+    {
+        return $this->hasMany(Proyek::class);
     }
 }

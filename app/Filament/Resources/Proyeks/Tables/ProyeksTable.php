@@ -15,6 +15,7 @@ class ProyeksTable
     public static function configure(Table $table): Table
     {
         return $table
+            ->recordUrl(null)
             ->columns([
                 TextColumn::make('judul')
                     ->label('Judul Proyek')
@@ -31,8 +32,13 @@ class ProyeksTable
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
                         'Riset Dosen' => 'success',
-                        'Publikasi' => 'info',
-                        'Proyek Internal' => 'warning',
+                        'Publikasi' => 'success',
+                        'Proyek Internal' => 'success',
+                        'Sistem Informasi' => 'success',
+                        'Aplikasi Mobile' => 'success',
+                        'Aplikasi Web' => 'success',
+                        'Aplikasi Desktop' => 'success',
+                        'AI/ML' => 'success',
                         default => 'gray',
                     })
                     ->searchable()
@@ -62,8 +68,8 @@ class ProyeksTable
                     ->relationship('dosen', 'nama'),
             ])
             ->actions([
-                ViewAction::make(),
-                EditAction::make(),
+                EditAction::make()
+                    ->url(fn ($record): string => route('filament.admin.resources.proyeks.edit', ['record' => $record])),
             ])
             ->bulkActions([
                 BulkActionGroup::make([

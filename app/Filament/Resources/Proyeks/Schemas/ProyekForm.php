@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Proyeks\Schemas;
 
 use App\Models\Dosen;
+use App\Models\Lab;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -28,12 +29,24 @@ class ProyekForm
                     ->preload()
                     ->required(),
                 
+                Select::make('lab_id')
+                    ->label('Laboratorium')
+                    ->relationship('lab', 'nama_lab')
+                    ->options(Lab::pluck('nama_lab', 'id'))
+                    ->searchable()
+                    ->preload(),
+                
                 Select::make('kategori')
                     ->label('Kategori')
                     ->options([
                         'Riset Dosen' => 'Riset Dosen',
                         'Publikasi' => 'Publikasi',
                         'Proyek Internal' => 'Proyek Internal',
+                        'Sistem Informasi' => 'Sistem Informasi',
+                        'Aplikasi Mobile' => 'Aplikasi Mobile',
+                        'Aplikasi Web' => 'Aplikasi Web',
+                        'Aplikasi Desktop' => 'Aplikasi Desktop',
+                        'AI/ML' => 'AI/ML',
                     ])
                     ->required(),
                 

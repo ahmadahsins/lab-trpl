@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LabController;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
@@ -10,6 +11,9 @@ use Laravel\Fortify\Features;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+// Lab routes
+Route::get('/lab/{slug}', [LabController::class, 'show'])->name('lab.show');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
