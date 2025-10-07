@@ -11,10 +11,9 @@ class Laboran extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nip_nik',
+        'nip',
         'nama',
         'email',
-        'jabatan',
         'foto',
         'lab_id',
     ];

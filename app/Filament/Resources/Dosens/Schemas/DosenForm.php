@@ -14,8 +14,8 @@ class DosenForm
     {
         return $form
             ->schema([
-                TextInput::make('nip_nidn')
-                    ->label('NIP/NIDN')
+                TextInput::make('nip')
+                    ->label('NIP')
                     ->required()
                     ->unique(ignoreRecord: true)
                     ->maxLength(255),

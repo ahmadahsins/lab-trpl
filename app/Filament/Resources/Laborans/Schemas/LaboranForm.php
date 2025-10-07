@@ -14,8 +14,8 @@ class LaboranForm
     {
         return $schema
             ->components([
-                TextInput::make('nip_nik')
-                    ->label('NIP/NIK')
+                TextInput::make('nip')
+                    ->label('NIP')
                     ->required()
                     ->unique(ignoreRecord: true)
                     ->maxLength(255),
@@ -31,10 +31,6 @@ class LaboranForm
                     ->required()
                     ->maxLength(255),
                 
-                TextInput::make('jabatan')
-                    ->label('Jabatan')
-                    ->required()
-                    ->maxLength(255),
                 
                 Select::make('lab_id')
                     ->label('Laboratorium')

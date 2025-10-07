@@ -6,6 +6,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
@@ -17,6 +18,11 @@ class ProyeksTable
         return $table
             ->recordUrl(null)
             ->columns([
+                ImageColumn::make('foto')
+                    ->label('Foto')
+                    ->square()
+                    ->size(50),
+                
                 TextColumn::make('judul')
                     ->label('Judul Proyek')
                     ->searchable()
@@ -24,6 +30,11 @@ class ProyeksTable
                 
                 TextColumn::make('dosen.nama')
                     ->label('Dosen Penanggung Jawab')
+                    ->searchable()
+                    ->sortable(),
+                
+                TextColumn::make('lab.nama_lab')
+                    ->label('Laboratorium')
                     ->searchable()
                     ->sortable(),
                 
@@ -48,6 +59,11 @@ class ProyeksTable
                     ->label('Tahun')
                     ->sortable(),
                 
+                TextColumn::make('mahasiswaProyeks_count')
+                    ->label('Jumlah Mahasiswa')
+                    ->counts('mahasiswaProyeks')
+                    ->sortable(),
+                
                 TextColumn::make('created_at')
                     ->label('Dibuat')
                     ->dateTime()
@@ -61,11 +77,20 @@ class ProyeksTable
                         'Riset Dosen' => 'Riset Dosen',
                         'Publikasi' => 'Publikasi',
                         'Proyek Internal' => 'Proyek Internal',
+                        'Sistem Informasi' => 'Sistem Informasi',
+                        'Aplikasi Mobile' => 'Aplikasi Mobile',
+                        'Aplikasi Web' => 'Aplikasi Web',
+                        'Aplikasi Desktop' => 'Aplikasi Desktop',
+                        'AI/ML' => 'AI/ML',
                     ]),
                 
                 SelectFilter::make('dosen_id')
                     ->label('Dosen')
                     ->relationship('dosen', 'nama'),
+                
+                SelectFilter::make('lab_id')
+                    ->label('Laboratorium')
+                    ->relationship('lab', 'nama_lab'),
             ])
             ->actions([
                 EditAction::make()

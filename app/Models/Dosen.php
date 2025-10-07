@@ -12,13 +12,14 @@ class Dosen extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nip_nidn',
+        'nip',
         'nama',
         'email',
         'jabatan',
         'foto',
         'deskripsi_singkat',
         'link_pribadi_web',
+        'slug',
     ];
 
     /**

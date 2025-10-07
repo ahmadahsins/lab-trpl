@@ -17,6 +17,7 @@ class Lab extends Model
         'slug',
         'deskripsi',
         'lokasi',
+        'foto',
     ];
 
     /**

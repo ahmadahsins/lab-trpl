@@ -22,8 +22,8 @@ class LaboransTable
                     ->circular()
                     ->size(50),
                 
-                TextColumn::make('nip_nik')
-                    ->label('NIP/NIK')
+                TextColumn::make('nip')
+                    ->label('NIP')
                     ->searchable()
                     ->sortable(),
                 
@@ -37,10 +37,6 @@ class LaboransTable
                     ->searchable()
                     ->copyable(),
                 
-                TextColumn::make('jabatan')
-                    ->label('Jabatan')
-                    ->searchable()
-                    ->sortable(),
                 
                 TextColumn::make('lab.nama_lab')
                     ->label('Laboratorium')

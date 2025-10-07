@@ -3,6 +3,8 @@
 namespace App\Filament\Resources\MahasiswaProyeks\Schemas;
 
 use App\Models\Dosen;
+use App\Models\Proyek;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
@@ -31,23 +33,20 @@ class MahasiswaProyekForm
                     ->preload()
                     ->required(),
                 
-                TextInput::make('judul_skripsi')
-                    ->label('Judul Skripsi/Proyek Akhir')
-                    ->required()
-                    ->maxLength(255)
+                FileUpload::make('foto_profil')
+                    ->label('Foto Profil')
+                    ->image()
+                    ->directory('mahasiswa-photos')
+                    ->visibility('public'),
+                
+                Select::make('proyeks')
+                    ->label('Proyek yang Diikuti')
+                    ->relationship('proyeks', 'judul')
+                    ->options(Proyek::pluck('judul', 'id'))
+                    ->multiple()
+                    ->searchable()
+                    ->preload()
                     ->columnSpanFull(),
-                
-                TextInput::make('tahun_lulus')
-                    ->label('Tahun Lulus')
-                    ->numeric()
-                    ->required()
-                    ->minValue(2000)
-                    ->maxValue(date('Y') + 1),
-                
-                TextInput::make('link_proyek_web')
-                    ->label('Link Website Proyek')
-                    ->url()
-                    ->maxLength(255),
             ]);
     }
 }

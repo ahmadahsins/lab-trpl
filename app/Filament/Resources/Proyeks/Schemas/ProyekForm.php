@@ -4,6 +4,8 @@ namespace App\Filament\Resources\Proyeks\Schemas;
 
 use App\Models\Dosen;
 use App\Models\Lab;
+use App\Models\MahasiswaProyek;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -71,6 +73,22 @@ class ProyekForm
                     ->label('Link Repository')
                     ->url()
                     ->maxLength(255),
+                
+                FileUpload::make('foto')
+                    ->label('Foto Proyek')
+                    ->image()
+                    ->directory('proyek-photos')
+                    ->visibility('public')
+                    ->columnSpanFull(),
+                
+                Select::make('mahasiswaProyeks')
+                    ->label('Anggota Tim (Mahasiswa)')
+                    ->relationship('mahasiswaProyeks', 'nama_mahasiswa')
+                    ->options(MahasiswaProyek::pluck('nama_mahasiswa', 'id'))
+                    ->multiple()
+                    ->searchable()
+                    ->preload()
+                    ->columnSpanFull(),
             ]);
     }
 }

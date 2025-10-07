@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DosenController;
 use App\Http\Controllers\LabController;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
@@ -14,6 +15,10 @@ Route::get('/', function () {
 
 // Lab routes
 Route::get('/lab/{slug}', [LabController::class, 'show'])->name('lab.show');
+
+// Dosen routes
+Route::get('/dosen', [DosenController::class, 'index'])->name('dosen.index');
+Route::get('/dosen/{dosen:slug}', [DosenController::class, 'show'])->name('dosen.show');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

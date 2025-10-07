@@ -22,8 +22,8 @@ class DosensTable
                     ->circular()
                     ->size(50),
 
-                TextColumn::make('nip_nidn')
-                    ->label('NIP/NIDN')
+                TextColumn::make('nip')
+                    ->label('NIP')
                     ->searchable()
                     ->sortable(),
 

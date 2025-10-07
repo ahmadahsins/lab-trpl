@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Labs\Schemas;
 
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
@@ -26,6 +27,13 @@ class LabForm
                 RichEditor::make('deskripsi')
                     ->label('Deskripsi')
                     ->required()
+                    ->columnSpanFull(),
+                
+                FileUpload::make('foto')
+                    ->label('Foto Laboratorium')
+                    ->image()
+                    ->directory('lab-photos')
+                    ->visibility('public')
                     ->columnSpanFull(),
             ]);
     }
