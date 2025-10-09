@@ -41,6 +41,7 @@ class LaboranForm
                     ->required(),
                 
                 FileUpload::make('foto')
+                    ->disk('public')
                     ->label('Foto Profil')
                     ->image()
                     ->directory('laboran-photos')

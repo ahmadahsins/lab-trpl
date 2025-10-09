@@ -39,6 +39,7 @@ class DosenForm
                 FileUpload::make('foto')
                     ->label('Foto Profil')
                     ->image()
+                    ->disk('public')
                     ->directory('dosen-photos')
                     ->visibility('public'),
 

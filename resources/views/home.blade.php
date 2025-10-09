@@ -4,7 +4,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div class="text-center">
                 <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
-                    Laboratorium Teknik Rekayasa Perangkat Lunak
+                    Laboratorium Teknologi Rekayasa Perangkat Lunak
                 </h1>
                 <p class="text-xl text-teal-100 mb-8 max-w-3xl mx-auto">
                     Pusat riset dan pengembangan teknologi perangkat lunak untuk masa depan yang lebih baik
@@ -127,23 +127,23 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 @foreach($dosens as $dosen)
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
-                    <div class="p-6 text-center">
-                        @if($dosen->foto)
-                        <img src="{{ asset('storage/' . $dosen->foto) }}" alt="{{ $dosen->nama }}" class="w-20 h-20 rounded-full mx-auto mb-4 object-cover">
-                        @else
-                        <div class="w-20 h-20 rounded-full bg-gray-100 mx-auto mb-4 flex items-center justify-center">
-                            <svg class="h-10 w-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                            </svg>
-                        </div>
-                        @endif
-                        <h3 class="text-lg font-semibold text-gray-900 mb-1">{{ $dosen->nama }}</h3>
-                        <p class="text-gray-600 text-sm mb-3">{{ $dosen->jabatan }}</p>
+                    @if($dosen->foto)
+                    <img src="{{ asset('storage/' . $dosen->foto) }}" alt="{{ $dosen->nama }}" class="w-full h-48 object-cover object-top">
+                    @else
+                    <div class="w-full h-48 bg-gray-100 flex items-center justify-center">
+                        <svg class="h-16 w-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </div>
+                    @endif
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ $dosen->nama }}</h3>
+                        <p class="text-gray-600 mb-4">{{ $dosen->jabatan }}</p>
                         
                         @if($dosen->bidangKeahlians->count() > 0)
-                        <div class="flex flex-wrap justify-center gap-2 mb-4">
+                        <div class="flex gap-2 mb-4">
                             @foreach($dosen->bidangKeahlians->take(2) as $bidang)
-                            <span class="bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded-full">{{ $bidang->nama_bidang }}</span>
+                            <span class="bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded-full max-w-fit truncate">{{ $bidang->nama_bidang }}</span>
                             @endforeach
                             @if($dosen->bidangKeahlians->count() > 2)
                             <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">+{{ $dosen->bidangKeahlians->count() - 2 }}</span>
@@ -151,9 +151,12 @@
                         </div>
                         @endif
                         
-                        <a href="{{ route('dosen.show', ['dosen' => $dosen]) }}" class="text-teal-600 hover:text-teal-700 font-semibold text-sm">
-                            Lihat Profil →
-                        </a>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full">{{ $dosen->proyeks_count ?? 0 }} Proyek</span>
+                            <a href="{{ route('dosen.show', ['dosen' => $dosen]) }}" class="text-teal-600 hover:text-teal-700 font-semibold text-sm">
+                                Lihat Detail →
+                            </a>
+                        </div>
                     </div>
                 </div>
                 @endforeach

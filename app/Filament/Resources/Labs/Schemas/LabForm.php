@@ -32,6 +32,7 @@ class LabForm
                 FileUpload::make('foto')
                     ->label('Foto Laboratorium')
                     ->image()
+                    ->disk('public')
                     ->directory('lab-photos')
                     ->visibility('public')
                     ->columnSpanFull(),

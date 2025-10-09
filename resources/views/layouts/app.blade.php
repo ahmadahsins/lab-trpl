@@ -19,23 +19,19 @@
 <body class="font-sans antialiased bg-gray-50">
     <div class="min-h-screen">
         <!-- Navigation -->
-        <nav class="bg-white shadow-sm border-b border-gray-200">
+        <nav class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16">
                     <div class="flex items-center">
                         <!-- Logo -->
                         <div class="flex-shrink-0 flex items-center">
                             <div class="flex items-center space-x-3">
-                                <div class="w-8 h-8 bg-teal-600 rounded-lg flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
-                                    </svg>
-                                </div>
+                                <img src="{{ asset('images/logo-trpl-removebg-preview.png') }}" alt="Lab TRPL" class="w-16 h-16 rounded-full object-cover">
                                 <div>
                                     <a href="{{ route('home') }}" class="text-xl font-bold text-gray-900">
                                         Lab TRPL
                                     </a>
-                                    <p class="text-xs text-gray-500 leading-none">Teknik Rekayasa Perangkat Lunak</p>
+                                    <p class="text-xs text-gray-500 leading-none">Teknologi Rekayasa Perangkat Lunak</p>
                                 </div>
                             </div>
                         </div>
@@ -99,7 +95,7 @@
                         </div>
                         <div>
                             <h3 class="text-xl font-bold">Lab TRPL</h3>
-                            <p class="text-gray-400 text-sm">Teknik Rekayasa Perangkat Lunak</p>
+                            <p class="text-gray-400 text-sm">Teknologi Rekayasa Perangkat Lunak</p>
                         </div>
                     </div>
                     <p class="text-gray-400">
@@ -117,9 +113,9 @@
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Kontak</h4>
                     <div class="space-y-2 text-gray-400">
-                        <p>Fakultas Teknik</p>
-                        <p>Universitas XYZ</p>
-                        <p>Email: lab.trpl@university.ac.id</p>
+                        <p>Sekolah Vokasi</p>
+                        <p>Universitas Gadjah Mada</p>
+                        <p>Email: lab.trpl@ugm.ac.id</p>
                     </div>
                 </div>
             </div>

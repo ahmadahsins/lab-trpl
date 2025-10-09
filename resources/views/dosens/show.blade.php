@@ -1,77 +1,67 @@
 <x-app-layout>
-    <!-- Header Section -->
-    <div class="bg-teal-600">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div class="text-center">
-                @if($dosen->foto)
-                <img src="{{ asset('storage/' . $dosen->foto) }}" alt="{{ $dosen->nama }}" class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-white object-cover shadow-lg">
-                @else
-                <div class="w-32 h-32 rounded-full mx-auto mb-6 bg-white/20 border-4 border-white flex items-center justify-center shadow-lg">
-                    <svg class="h-16 w-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                </div>
-                @endif
-                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">{{ $dosen->nama }}</h1>
-                <p class="text-xl text-teal-100">{{ $dosen->jabatan }}</p>
-            </div>
-        </div>
-    </div>
-
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-
-        <!-- Dosen Info -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Sidebar - Basic Info -->
-            <div class="lg:col-span-1">
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
-                    <h2 class="text-xl font-semibold text-gray-900 mb-6">Informasi</h2>
+        <!-- Dosen Card -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mb-8">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/3 lg:w-1/4">
+                    @if($dosen->foto)
+                    <img src="{{ asset('storage/' . $dosen->foto) }}" alt="{{ $dosen->nama }}" class="w-full h-full object-cover md:h-80">
+                    @else
+                    <div class="w-full h-64 md:h-80 bg-gray-100 flex items-center justify-center">
+                        <svg class="h-24 w-24 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </div>
+                    @endif
+                </div>
+                <div class="p-6 md:p-8 md:w-2/3 lg:w-3/4">
+                    <h1 class="text-3xl font-bold text-gray-900 mb-2">{{ $dosen->nama }}</h1>
+                    <p class="text-xl text-gray-600 mb-4">{{ $dosen->jabatan }}</p>
                     
-                    <div class="space-y-4">
+                    @if($dosen->bidangKeahlians->count() > 0)
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        @foreach($dosen->bidangKeahlians as $bidang)
+                        <span class="bg-teal-100 text-teal-800 text-sm px-3 py-1 rounded-full">{{ $bidang->nama_bidang }}</span>
+                        @endforeach
+                    </div>
+                    @endif
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                         <div>
-                            <h3 class="text-sm font-medium text-gray-500 mb-1">NIP</h3>
-                            <p class="text-gray-900">{{ $dosen->nip }}</p>
+                            <span class="text-gray-500">NIP:</span>
+                            <span class="text-gray-900 ml-2">{{ $dosen->nip }}</span>
                         </div>
-                        
                         <div>
-                            <h3 class="text-sm font-medium text-gray-500 mb-1">Email</h3>
-                            <p class="text-gray-900">{{ $dosen->email }}</p>
+                            <span class="text-gray-500">Email:</span>
+                            <span class="text-gray-900 ml-2">{{ $dosen->email }}</span>
                         </div>
-                        
                         @if($dosen->link_pribadi_web)
-                        <div>
-                            <h3 class="text-sm font-medium text-gray-500 mb-1">Website</h3>
-                            <a href="{{ $dosen->link_pribadi_web }}" target="_blank" class="text-teal-600 hover:text-teal-700 break-all">
-                                {{ $dosen->link_pribadi_web }}
-                            </a>
-                        </div>
-                        @endif
-                        
-                        @if($dosen->bidangKeahlians->count() > 0)
-                        <div>
-                            <h3 class="text-sm font-medium text-gray-500 mb-2">Bidang Keahlian</h3>
-                            <div class="flex flex-wrap gap-2">
-                                @foreach($dosen->bidangKeahlians as $bidang)
-                                <span class="bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded-full">{{ $bidang->nama_bidang }}</span>
-                                @endforeach
-                            </div>
+                        <div class="md:col-span-2">
+                            <span class="text-gray-500">Website:</span>
+                            <a href="{{ $dosen->link_pribadi_web }}" target="_blank" class="text-teal-600 hover:text-teal-700 ml-2">{{ $dosen->link_pribadi_web }}</a>
                         </div>
                         @endif
                     </div>
                 </div>
             </div>
-
-            <!-- Main Content -->
-            <div class="lg:col-span-2">
-                        
+        </div>
+        
+        <!-- Content -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
                 @if($dosen->deskripsi_singkat)
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
-                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">Tentang</h2>
+                    <h2 class="text-xl font-semibold text-gray-900 mb-6">Tentang</h2>
                     <div class="prose max-w-none">
                         <p class="text-gray-600">{{ $dosen->deskripsi_singkat }}</p>
                     </div>
                 </div>
                 @endif
+            </div>
+
+            <!-- Main Content -->
+            <div class="lg:col-span-2">
                             
                 <!-- Projects Section -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">

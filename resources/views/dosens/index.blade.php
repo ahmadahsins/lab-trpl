@@ -4,7 +4,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="text-center">
                 <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                    Dosen Teknik Rekayasa Perangkat Lunak
+                    Dosen Teknologi Rekayasa Perangkat Lunak
                 </h1>
                 <p class="text-xl text-teal-100 max-w-2xl mx-auto">
                     Tim pengajar dan peneliti yang berpengalaman di bidang teknologi perangkat lunak

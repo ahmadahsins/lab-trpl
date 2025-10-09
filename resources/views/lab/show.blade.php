@@ -1,20 +1,24 @@
 <x-app-layout>
     <!-- Header Section -->
-    <div class="bg-teal-600">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div class="text-center">
-                @if($lab->foto)
-                <img src="{{ asset('storage/' . $lab->foto) }}" alt="{{ $lab->nama_lab }}" class="w-32 h-32 rounded-xl mx-auto mb-6 border-4 border-white object-cover shadow-lg">
-                @else
-                <div class="w-32 h-32 rounded-xl mx-auto mb-6 bg-white/20 border-4 border-white flex items-center justify-center shadow-lg">
-                    <svg class="h-16 w-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                    </svg>
-                </div>
-                @endif
-                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">{{ $lab->nama_lab }}</h1>
-                <p class="text-xl text-teal-100">{{ $lab->lokasi }}</p>
+    <div class="relative">
+        @if($lab->foto)
+        <div class="h-96 w-full overflow-hidden">
+            <img src="{{ asset('storage/' . $lab->foto) }}" alt="{{ $lab->nama_lab }}" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+        </div>
+        @else
+        <div class="h-96 w-full bg-teal-600 overflow-hidden">
+            <div class="h-full w-full flex items-center justify-center">
+                <svg class="h-32 w-32 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
             </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+        </div>
+        @endif
+        <div class="absolute bottom-0 inset-x-0 p-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">{{ $lab->nama_lab }}</h1>
+            <p class="text-xl text-white/90 drop-shadow-md">{{ $lab->lokasi }}</p>
         </div>
     </div>
 

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laboratorium TRPL - Teknik Rekayasa Perangkat Lunak</title>
+        <title>Laboratorium TRPL - Teknologi Rekayasa Perangkat Lunak</title>
 
         <link rel="icon" href="/favicon.ico" sizes="any">
         <link rel="icon" href="/favicon.svg" type="image/svg+xml">

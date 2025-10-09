@@ -77,6 +77,7 @@ class ProyekForm
                 FileUpload::make('foto')
                     ->label('Foto Proyek')
                     ->image()
+                    ->disk('public')
                     ->directory('proyek-photos')
                     ->visibility('public')
                     ->columnSpanFull(),
