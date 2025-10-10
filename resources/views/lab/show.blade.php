@@ -109,11 +109,6 @@
                                 <div class="flex flex-wrap gap-2">
                                     @foreach($proyek->mahasiswaProyeks as $mahasiswa)
                                     <div class="flex items-center bg-white rounded-full px-3 py-1 shadow-sm">
-                                        @if($mahasiswa->foto_profil)
-                                        <img src="{{ asset('storage/' . $mahasiswa->foto_profil) }}" alt="{{ $mahasiswa->nama_mahasiswa }}" class="w-4 h-4 rounded-full mr-2">
-                                        @else
-                                        <div class="w-4 h-4 bg-gray-200 rounded-full mr-2"></div>
-                                        @endif
                                         <span class="text-xs text-gray-600">{{ $mahasiswa->nama_mahasiswa }}</span>
                                     </div>
                                     @endforeach

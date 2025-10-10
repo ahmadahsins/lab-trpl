@@ -23,10 +23,9 @@
                     <label for="jabatan" class="block text-sm font-medium text-gray-700 mb-2">Jabatan</label>
                     <select name="jabatan" id="jabatan" class="w-full rounded-lg border-gray-300 focus:border-teal-500 focus:ring-teal-500">
                         <option value="">Semua Jabatan</option>
-                        <option value="Profesor">Profesor</option>
-                        <option value="Lektor Kepala">Lektor Kepala</option>
-                        <option value="Lektor">Lektor</option>
-                        <option value="Asisten Ahli">Asisten Ahli</option>
+                        <option value="Kaprodi TRPL">Kaprodi TRPL</option>
+                        <option value="Sekretaris TRPL">Sekretaris TRPL</option>
+                        <option value="Dosen TRPL">Dosen TRPL</option>
                     </select>
                 </div>
                 <div>

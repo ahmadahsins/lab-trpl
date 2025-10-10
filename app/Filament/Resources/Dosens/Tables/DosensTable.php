@@ -62,10 +62,9 @@ class DosensTable
                 SelectFilter::make('jabatan')
                     ->label('Jabatan')
                     ->options([
-                        'Profesor' => 'Profesor',
-                        'Lektor Kepala' => 'Lektor Kepala',
-                        'Lektor' => 'Lektor',
-                        'Asisten Ahli' => 'Asisten Ahli',
+                        'Kaprodi TRPL' => 'Kaprodi TRPL',
+                        'Sekretaris TRPL' => 'Sekretaris TRPL',
+                        'Dosen TRPL' => 'Dosen TRPL',
                     ]),
             ])
             // ->actions([
